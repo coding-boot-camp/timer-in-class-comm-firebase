@@ -3,7 +3,8 @@
 //Variables: 
 
 var startTime = 300; //start time in seconds 
-
+var startTime = 5;
+var song = new Audio('gmadness.mp3');
 //Functions:
 // 
 
@@ -17,17 +18,21 @@ function stop(){
 }
 function reset(){
 	startTime = 300;
+	startTime = 5;
 	clearInterval(counter);
 	$('#timeBox').html(timeConverter(startTime));
+	stopAudio(song);
 }
 function audio(){
-	var audio = new Audio('gmadness.mp3');
-    audio.play();
+    song.play();
+}
+function stopAudio(){
+	song.pause();
 }
 function countDown(){
 	startTime = startTime - 1;
 		if (startTime == 0) {
-		audio();
+		audio(song);
 		clearInterval(counter);
 		}
 	$('#timeBox').html(timeConverter(startTime));
