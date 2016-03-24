@@ -5,19 +5,20 @@
 var startTime = 300; //start time in seconds 
 
 //Functions:
-$('#timeBox').html(timeConverter(startTime));
+// 
 
 function start(){
 	counter = setInterval(countDown, 1000);
-	console.log(counter);
+	var currentTime = (timeConverter(startTime));
+	$('#timeBox').html(currentTime);
 }
 function stop(){
 	clearInterval(counter);
 }
 function reset(){
 	startTime = 300;
-	$('#timeBox').html(timeConverter(startTime));
 	clearInterval(counter);
+	$('#timeBox').html(timeConverter(startTime));
 }
 function audio(){
 	var audio = new Audio('gmadness.mp3');
@@ -29,6 +30,7 @@ function countDown(){
 		audio();
 		clearInterval(counter);
 		}
+	$('#timeBox').html(timeConverter(startTime));
 }
 function timeConverter(t){
 
@@ -46,9 +48,7 @@ function timeConverter(t){
   
 }
 
-// //Main Processes:		
-// 		OnButtonClickStart setInterval(call audio function, in 5 minutes) AND call start function
-// 		OnButtonClickStop pause time
+//Main Processes:		
 window.onload = function(){
   $('#start').on('click', start);
   $('#stop').on('click', stop);
