@@ -1,5 +1,9 @@
 var baseURL = 'https://api.spotify.com/v1/search?q=';
 
+function setTimerAudio(){
+	
+} 
+
 function makeRequest(songValue){
 	var queryURL = baseURL + songValue + '&type=track';
 
@@ -11,6 +15,9 @@ function makeRequest(songValue){
 			console.log(response.tracks.items[i].artists[0].name);
 			console.log(response.tracks.items[i].name)
 			console.log(response.tracks.items[i].preview_url);
+			$('#songSearchResults').append('<h2>Artist: ' + response.tracks.items[i].artists[0].name + '</h2>');
+			$('#songSearchResults').append('<h2>Track title: ' + response.tracks.items[i].name + '</h2>');
+			$('#songSearchResults').append('<h4>Preview clip: ' + response.tracks.items[i].preview_url + '</h4>');
 		}
 		console.log(queryURL);
 		console.log(response);
