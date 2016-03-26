@@ -5,26 +5,26 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		<!-- normalize/reset -->
+		<!-- Normalize/reset -->
 		<link rel="stylesheet" href="assets/css/reset.css">
 
-		<!-- bootstrap css -->
+		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		
 		<!-- jQuery -->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
 
-		<!-- bootstrap js -->
+		<!-- Bootstrap JS -->
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		
-		<!-- external css -->
+		<!-- External css -->
 		<link rel="stylesheet" href="assets/css/style.css">
 
-		<!-- firebase script -->
+		<!-- Firebase -->
 		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 	</head>
 	<body>
-		<div class="container-fluid">
+		<div class="container">
 			<div class="jumbotron" id="main">
 				<div class="text-center" id="timeBox">00:00</div>
 					<div class="text-center" id="buttons">
@@ -33,11 +33,6 @@
 						<button id="reset">Reset</button>
 					</div>
 			</div>
-		<div class="container">
-
-	  	<!-- Button to trigger modal -->
-	  	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Spotify Search</button>
-
 		  	<!-- Modal -->
 			<div class="modal fade" id="myModal" role="dialog">
 				<div class="modal-dialog">
@@ -49,8 +44,9 @@
 					    	<h4 class="modal-title">Search for a track</h4>
 				    	</div>
 						<div class="modal-body">
-					    	<div class="form-group col-md-2">
+					    	<div class="form-group col-lg-5">
 				    			<input type="text" class="form-control" id="query" value="" placeholder="Type a Track Name"/>
+				    			<input type="submit" id="search" value="Search" />
 							</div>
 					    	<div id="songSearchResults"></div>
 						</div>
@@ -60,19 +56,31 @@
 					</div>
 				</div>
 			</div>
-		</div>
-			<div class="row">
-			<div class="panel-body">
-				<form role="form" id="search-form">
-					<div class="form-group col-md-2">
-					<input type="text" class="form-control" id="studentName" value="" placeholder="What's your name?">
-					</div>
-				    <input type="submit" id="search" value="Search" />	
-			    </form>					
+
+			<div class="panel panel-default">
+				<!-- Button to trigger modal -->
+	  			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Spotify Search</button>
+
+				<div class="panel-body">
+					<form role="form" id="search-form">
+						<div class="form-group col-md-2">
+							<input type="text" class="form-control" id="studentName" value="" placeholder="What's your name?">
+						</div>
+						<div class="form-group col-md-2">
+							<input type="text" class="form-control" id="" value="" placeholder="Type a Track Name"/>	
+						</div>
+					    	<input type="submit" id="search" value="Send" />	
+				    </form>					
+				</div>
 			</div>				
-			</div>
 		</div>
+
+
+
+		<!-- timerJS -->
 		<script type="text/javascript" src="assets/js/app.js"></script>
+
+		<!-- SpotifyAPI -->
 		<script type"text/javascript" src="assets/js/api.js"></script>
 	</body>
 </html>
