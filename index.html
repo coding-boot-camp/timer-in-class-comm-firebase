@@ -2,22 +2,41 @@
 <html>
 	<head>
 		<title>funBreak</title>
+		<link rel="stylesheet" href="assets/css/reset.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
 		<link rel="stylesheet" href="assets/css/style.css">
+		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 	</head>
 	<body>
-		<div id="main">
-			<div id="timeBox">00:00</div>
-			<div id="buttons">
-				<button id="start">Start</button>
-				<button id="stop">Stop</button>
-				<button id="reset">Reset</button>
+		<div class="container-fluid">
+			<div class="jumbotron" id="main">
+				<div class="text-center" id="timeBox">00:00</div>
+					<div class="text-center" id="buttons">
+						<button id="start">Start</button>
+						<button id="stop">Stop</button>
+						<button id="reset">Reset</button>
+					</div>
 			</div>
+			<div class="row">
+			<div class="panel-body">
+				<form role="form" id="search-form">
+					<div class="form-group col-md-2">
+					<input type="text" class="form-control" id="studentName" value="" placeholder="What's your name?">
+					</div>
+					<div class="form-group col-md-2">
+				    <input type="text" class="form-control" id="query" value="" placeholder="Type a Track Name"/>
+					</div>
+				    <input type="submit" id="search" value="Search" />	
+			    </form>					
+			</div>				
+			</div>
+
+
+			<button>Spotify Search</button>
+
+	    	<div id="songSearchResults"></div>			
 		</div>
-		<form id="search-form">
-        <input type="text" id="query" value="" placeholder="Type a Track Name"/>
-        <input type="submit" id="search" value="Search" />
-    	</form>
-    	<div id="songSearchResults"></div>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
 		<script type="text/javascript" src="assets/js/app.js"></script>
 		<script type"text/javascript" src="assets/js/api.js"></script>

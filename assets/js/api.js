@@ -25,6 +25,7 @@ function makeRequest(songValue){
 	}
 
 $('#search').on('click', function(){
+	$('#songSearchResults').empty();
 	var songValue = $('#query').val().replace(' ', '').trim();
 
 	makeRequest(songValue);
