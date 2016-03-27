@@ -1,7 +1,7 @@
 // v1 - timer that rings after 5 minutes
 
 var startTime = 300; //start time in seconds 
-var startTime = 3;
+var startTime = 10;
 var song = new Audio('assets/audio/gmadness.mp3');
 
 	function start(){
@@ -14,7 +14,7 @@ var song = new Audio('assets/audio/gmadness.mp3');
 	}
 	function reset(){
 		startTime = 300;
-		startTime = 3;
+		startTime = 10;
 		clearInterval(counter);
 		$('#timeBox').html(timeConverter(startTime));
 		stopAudio(song);
@@ -53,7 +53,12 @@ window.onload = function(){
 	$('#reset').on('click', reset);
 }
 
-
+$("#tabs").tabs({
+    activate: function (event, ui) {
+        var active = $('#tabs').tabs('option', 'active');
+    }
+}
+);
 
 
 

@@ -10,9 +10,15 @@
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-		
+
 		<!-- jQuery -->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+		
+		<!-- jQuery CSS -->
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css">
+
+		<!-- jQuery UI -->
+		<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 		<!-- Bootstrap JS -->
   		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -57,6 +63,17 @@
 				</div>
 			</div>
 
+			<!-- Local tabs -->
+		<div id="tabs">
+    		<ul>
+        		<li><a href="#tabs-1">Tab 1</a>
+        		</li>
+        		<li><a href="#tabs-2">Tab 2</a>
+        		</li>
+        		<li><a href="#tabs-3">Tab 3</a>
+        		</li>
+    		</ul>
+    	<div id="tabs-1">
 			<div class="panel panel-default">
 				<!-- Button to trigger modal -->
 	  			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Spotify Search</button>
@@ -64,24 +81,40 @@
 				<div class="panel-body">
 					<form role="form" id="search-form">
 						<div class="form-group col-md-2">
-							<input type="text" class="form-control" id="studentName" value="" placeholder="What's your name?">
+							<input type="text" class="form-control" id="studentName" placeholder="What's your name?">
 						</div>
 						<div class="form-group col-md-2">
-							<input type="text" class="form-control" id="" value="" placeholder="Type a Track Name"/>	
+							<input type="text" class="form-control" id="trackName" placeholder="Type a Track Name"/>
 						</div>
-					    	<input type="submit" id="search" value="Send" />	
+					    	<button type="submit" class="btn btn-default" id="sendButton">Submit</button>
 				    </form>					
 				</div>
-			</div>				
+			</div>	
+			<div class="panel panel-default" id="songRequest">
+  				<div class="panel-body">
+    				Song Requests
+  				</div>
+			</div>	       	
+    	</div>
+    	<div id="tabs-2">
+        	<p>This is where fun facts will be</p>
+    	</div>
+    	<div id="tabs-3">
+        	<p>This is where polls will be</p>
+    	</div>
 		</div>
-
-
+			<div id="tabid"></div>
+		</div>
 
 		<!-- timerJS -->
 		<script type="text/javascript" src="assets/js/app.js"></script>
 
 		<!-- SpotifyAPI -->
-		<script type"text/javascript" src="assets/js/api.js"></script>
+		<script type="text/javascript" src="assets/js/api.js"></script>
+
+		<!-- Firebase -->
+		<script type="text/javascript" src="assets/js/firebase.js"></script>
+
 	</body>
 </html>
 

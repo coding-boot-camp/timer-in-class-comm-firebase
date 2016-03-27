@@ -1,20 +1,36 @@
 var dataRef = new Firebase('https://funbreak.firebaseIO.com');
 
-$("#addUser").on("click", function() {
+var name = "";
+var track = "";
 
-	name = $('#nameinput').val().trim();
-	email = $('#emailinput').val().trim();
-	age = $('#ageinput').val().trim();
-	comment = $('#commentinput').val().trim();
+$("#sendButton").on("click", function() {
+
+	name = $('#studentName').val().trim();
+	track = $('#trackName').val().trim();
+
 	// Code for the push
 	dataRef.push({
 		name: name,
-		email: email,
-		age: age,
-		comment: comment,
+		track: track,
 		dateAdded: Firebase.ServerValue.TIMESTAMP
 	})
 	// Don't refresh the page!
 	return false;
+});
+
+dataRef.on("child_added", function(childSnapshot) {
+	// Log everything that's coming out of snapshot
+	console.log(childSnapshot.val().name);
+	console.log(childSnapshot.val().track);
+	console.log(childSnapshot.val().dateAdded);
+	
+	// full list of items to the well
+   				
+		$('#songRequest').append("<div class='well'><span id='name'> "+childSnapshot.val().name+" </span><span id='email'> "+childSnapshot.val().track+" </span></div>")
+  
+
+// Handle the errors
+}, function(errorObject){
+	//console.log("Errors handled: " + errorObject.code)
 });
 
