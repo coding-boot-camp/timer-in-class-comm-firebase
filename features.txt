@@ -1,0 +1,10 @@
+//Features:
+	//In track search, contain all characteristics in objects
+		//choose "this" and we should be able to direct our "preview_url" bank
+		//we need an array of all "preview_urls" (this will allow us to push this link to our audio constructor and set it as the winning song)
+		//Clear search results so when I go search again there is nothing there
+	//Create form for fun facts (connect with firebase and output results)
+	//Customize timer input time
+		//Create dropdown of all available timer options
+	//Styling to timer, each tab page, modal
+	//Design logo for funBreak, have these logos across different areas of the page as click buttons

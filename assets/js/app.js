@@ -53,6 +53,12 @@ window.onload = function(){
 	$('#reset').on('click', reset);
 }
 
+// Use this to set new Audio constructor
+// mySound = new Audio(['https://p.scdn.co/mp3-preview/f59a6b5f638815d9116c84d21d8bbf01ffda0892']);
+// function playAudio(){
+// 	mySound.play();
+// }
+
 
 
 
