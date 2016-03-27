@@ -53,12 +53,6 @@ window.onload = function(){
 	$('#reset').on('click', reset);
 }
 
-$("#tabs").tabs({
-    activate: function (event, ui) {
-        var active = $('#tabs').tabs('option', 'active');
-    }
-}
-);
 
 
 

@@ -4,8 +4,6 @@ function makeRequest(songValue){
 	var queryURL = baseURL + songValue + '&type=track';
 
 	$.ajax({url: queryURL, method: 'GET'}).done(function(response){
-		alert('done!');
-		//response.items[itterate]
 		for (var i = 0; i < response.tracks.items.length; i++) {
 			// console.log(response.tracks.items[i]);
 			// console.log(response.tracks.items[i].artists[0].name);
@@ -18,13 +16,17 @@ function makeRequest(songValue){
 		}
 		// console.log(queryURL);
 		// console.log(response);
-		$('.modalSearch').on('click', function(event){
-		console.log(this);
-
 		});
-	});
 	}
 
+function requestWinningAudio(){
+	var winningAudio = randomAudioWin();
+	var queryURL = baseURL + winningAudio + '&type=track';
+	$.ajax({url: queryURL, method: 'GET'}).done(function(response){
+
+	})
+}	
+	
 $('#search').on('click', function(){
 	$('#songSearchResults').empty();
 	var songValue = $('#query').val().replace(' ', '').trim();
@@ -35,20 +37,16 @@ $('#search').on('click', function(){
 });
 
 //Features:
-	//Contain each search result in a div and make that div clickable
-	//Div is clicked, I want to redirect to the main page with the text already filled out ready to search
-		//Div click should close the modal
+	//In track search, contain all characteristics in objects
+		//choose "this" and we should be able to direct our "preview_url" bank
+		//we need an array of all "preview_urls" (this will allow us to push this link to our audio constructor and set it as the winning song)
 		//Clear search results so when I go search again there is nothing there
-	//User submits data, I want to capture with firebase
-	//Data captured by firebase I want to send back to application 
-		//Send data in a div to show all the requested songs by students
-		//Contain results in array and randomize selection and send selection to be timer audio
-	//Create form for fun facts
-	//Send data to firebase
-	//Send data back to show in a div
+	//Create form for fun facts (connect with firebase and output results)
 	//Customize timer input time
 		//Create dropdown of all available timer options
-	//Create nav tabs to seperate pages
+	//Styling to timer, each tab page, modal
+	//Design logo for funBreak, have these logos across different areas of the page as click buttons
+
 
 // mySound = new Audio(['https://p.scdn.co/mp3-preview/f59a6b5f638815d9116c84d21d8bbf01ffda0892']);
 // function playAudio(){
