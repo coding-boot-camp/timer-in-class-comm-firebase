@@ -31,6 +31,8 @@
 	</head>
 	<body>
 		<div class="container">
+
+			<!-- Jumbotron -->
 			<div class="jumbotron" id="main">
 				<div class="text-center" id="timeBox">00:00</div>
 					<div class="text-center" id="buttons">
@@ -39,6 +41,7 @@
 						<button id="reset">Reset</button>
 					</div>
 			</div>
+		<div class="row">
 		  	<!-- Modal -->
 			<div class="modal fade" id="myModal" role="dialog">
 				<div class="modal-dialog">
@@ -63,57 +66,50 @@
 				</div>
 			</div>
 
-<div class="container">
-  <h2>Dynamic Tabs</h2>
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-    <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-    <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-    <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
-  </ul>
+			<!-- Dynamic Nav Tabs -->
+  			<ul class="nav nav-tabs">
+    			<li><a data-toggle="tab" href="#menu1">Music Requests</a></li>
+    			<li><a data-toggle="tab" href="#menu2">Fun Facts</a></li>
+    			<li><a data-toggle="tab" href="#menu3">Fun Polls</a></li>
+  			</ul>
 
-  <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-      <h3>HOME</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-    <div id="menu1" class="tab-pane fade">
+  		<div class="tab-content">
+		<div id="menu1" class="tab-pane fade">
+
+			<!-- Search Result Box -->
+			<div class="col-lg-6">
+				<div class="panel panel-default .col-md-6" id="songRequest">
+  					<div class="panel-body">
+    				Song Requests
+  					</div>
+				</div>				
+			</div>
+			
+			<!-- Form to submit name and song request -->
+			<div class="col-lg-6">
 			<div class="panel panel-default">
 				<!-- Button to trigger modal -->
 	  			<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Spotify Search</button>
-
-				<div class="panel-body">
+				
+					<div class="panel-body .col-md-6">
 					<form role="form" id="search-form">
-						<div class="form-group col-md-2">
+						<div class="form-group col-md-4">
 							<input type="text" class="form-control" id="studentName" placeholder="What's your name?">
 						</div>
-						<div class="form-group col-md-2">
+						<div class="form-group col-md-4">
 							<input type="text" class="form-control" id="trackName" placeholder="Type a Track Name"/>
 						</div>
 					    	<button type="submit" class="btn btn-default" id="sendButton">Submit</button>
 				    </form>					
-				</div>
+					</div>
+			</div>				
 			</div>
+    	</div>
+    	<div id="menu2" class="tab-pane fade"></div>
+    	<div id="menu3" class="tab-pane fade"></div>
+  		</div>
 
-						<div class="panel panel-default" id="songRequest">
-  				<div class="panel-body">
-    				Song Requests
-  				</div>
-			</div>	
-    </div>
-    <div id="menu2" class="tab-pane fade">
-      <h3>Menu 2</h3>
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-    </div>
-    <div id="menu3" class="tab-pane fade">
-      <h3>Menu 3</h3>
-      <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-    </div>
-  </div>
-</div>
-
-
-
+		</div>
 		</div>
 
 		<!-- timerJS -->
