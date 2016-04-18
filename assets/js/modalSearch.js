@@ -88,16 +88,16 @@ dataRef.on("child_added", function(childSnapshot) {
 	console.log("Errors handled: " + errorObject.code)
 });
 
-// Local storage
-// function randomAudioWin(){
-// 	for(var i = 0; i < winningAudio.length;i++){
-// 		var lotteryNumber = (Math.floor(Math.random() * (winningAudio.length) + 1));
-// 		if (lotteryNumber == i) {
-// 			var winAudio = winningAudio[i]
-// 		} 
-// 	}
-// 	return winAudio
-// }
+
+function randomAudioWin(){
+	for(var i = 0; i < winningAudio.length;i++){
+		var lotteryNumber = (Math.floor(Math.random() * (winningAudio.length) + 1));
+		if (lotteryNumber == i) {
+			var winAudio = winningAudio[i]
+		} 
+	}
+	return winAudio
+}
 
 
 
