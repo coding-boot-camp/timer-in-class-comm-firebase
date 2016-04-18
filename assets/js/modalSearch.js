@@ -1,9 +1,12 @@
 var dataRef = new Firebase('https://funbreak.firebaseIO.com');
+var dataPreviewClip = new Firebase('https://funbreak.firebaseIO.com/preview_url');
 
 var baseURL = 'https://api.spotify.com/v1/search?q=';
 
 var name = "";
 var track = "";
+
+// local storage 
 var winningAudio = [];
 
 function makeRequest(songValue){
@@ -22,12 +25,27 @@ function makeRequest(songValue){
 
 		//Capture a value when item clicked
 		$(".modalSearch").on("click", function(){
-		alert('this modal has been clicked');
+		alert('this track has been selected');
 		console.log(this);
-		var searchSend = $(this).data();
-		var searchJSON = (searchSend.song);
-		winningAudio.push(searchJSON);
-		randomAudioWin();
+		var preview_url = $(this).data().song;
+		console.log(preview_url);
+		
+
+		var winningSong = {
+			preview_url: preview_url
+		}
+
+		dataPreviewClip.push(winningSong);
+		var query = 'https://funbreak.firebaseio.com/preview_url.json';
+
+		$.ajax({url: query, method: 'GET'}).done(function(response){
+		console.log('here is the preview_url json');
+		for (var prop in response) {
+			var urlResponse = response[prop].preview_url;
+			console.log(urlResponse);
+			winningAudio.push(urlResponse);
+		} 
+		});
 		
 })
 		});
@@ -47,6 +65,8 @@ $("#sendForm").on("click", function() {
 		dateAdded: Firebase.ServerValue.TIMESTAMP
 	})
 });
+
+// API search call
 $("#apiCall").on("click", function(){
 
 	$('#songSearchResults').empty();
@@ -57,7 +77,7 @@ $("#apiCall").on("click", function(){
 	return false;
 })	
 
-
+// Adding all children to well
 dataRef.on("child_added", function(childSnapshot) {
 	var trackAudioName = childSnapshot.val().track
 
@@ -68,16 +88,16 @@ dataRef.on("child_added", function(childSnapshot) {
 	console.log("Errors handled: " + errorObject.code)
 });
 
-
-function randomAudioWin(){
-	for(var i = 0; i < winningAudio.length;i++){
-		var lotteryNumber = (Math.floor(Math.random() * (winningAudio.length) + 1));
-		if (lotteryNumber == i) {
-			var winAudio = winningAudio[i]
-		} 
-	}
-	return winAudio
-}
+// Local storage
+// function randomAudioWin(){
+// 	for(var i = 0; i < winningAudio.length;i++){
+// 		var lotteryNumber = (Math.floor(Math.random() * (winningAudio.length) + 1));
+// 		if (lotteryNumber == i) {
+// 			var winAudio = winningAudio[i]
+// 		} 
+// 	}
+// 	return winAudio
+// }
 
 
 
