@@ -6,9 +6,6 @@ var baseURL = 'https://api.spotify.com/v1/search?q=';
 var name = "";
 var track = "";
 
-// local storage 
-var winningAudio = [];
-
 function makeRequest(songValue){
 	var queryURL = baseURL + songValue + '&type=track';
 
@@ -36,16 +33,7 @@ function makeRequest(songValue){
 		}
 
 		dataPreviewClip.push(winningSong);
-		var query = 'https://funbreak.firebaseio.com/preview_url.json';
 
-		$.ajax({url: query, method: 'GET'}).done(function(response){
-		console.log('here is the preview_url json');
-		for (var prop in response) {
-			var urlResponse = response[prop].preview_url;
-			console.log(urlResponse);
-			winningAudio.push(urlResponse);
-		} 
-		});
 		
 })
 		});
@@ -89,15 +77,7 @@ dataRef.on("child_added", function(childSnapshot) {
 });
 
 
-function randomAudioWin(){
-	for(var i = 0; i < winningAudio.length;i++){
-		var lotteryNumber = (Math.floor(Math.random() * (winningAudio.length) + 1));
-		if (lotteryNumber == i) {
-			var winAudio = winningAudio[i]
-		} 
-	}
-	return winAudio
-}
+
 
 
 

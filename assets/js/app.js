@@ -1,9 +1,22 @@
 // v1 - timer that rings after 5 minutes
 
+// local storage 
+var winningAudio = [];
+var winAudio;
 var startTime = 300; //start time in seconds 
-var startTime = 10;
-var song = new Audio('assets/audio/gmadness.mp3');
-
+var startTime = 3;
+var query = 'https://funbreak.firebaseio.com/preview_url.json';
+var song;
+	function callToFireBase() {
+		$.ajax({url: query, method: 'GET'}).done(function(response){
+			// console.log('here is the preview_url json');
+			for (var prop in response) {
+				var urlResponse = response[prop].preview_url;
+				// console.log(urlResponse);
+				winningAudio.push(urlResponse);
+			} 
+			});
+	}	
 	function start(){
 		counter = setInterval(countDown, 1000);
 		var currentTime = (timeConverter(startTime));
@@ -14,7 +27,7 @@ var song = new Audio('assets/audio/gmadness.mp3');
 	}
 	function reset(){
 		startTime = 300;
-		startTime = 10;
+		startTime = 3;
 		clearInterval(counter);
 		$('#timeBox').html(timeConverter(startTime));
 		stopAudio(song);
@@ -25,10 +38,21 @@ var song = new Audio('assets/audio/gmadness.mp3');
 	function stopAudio(){
 		song.pause();
 	}
+	function randomAudioWin(){
+		for(var i = 0; i < winningAudio.length;i++){
+			var lotteryNumber = (Math.floor(Math.random() * (winningAudio.length) + 1));
+			if (lotteryNumber == i) {
+				var winAudio = winningAudio[i]
+				song = new Audio(winAudio);
+			} 
+		}
+	}
 	function countDown(){
 		startTime = startTime - 1;
 			if (startTime == 0) {
-			audio(song);
+			callToFireBase();
+			randomAudioWin();
+			// audio();
 			clearInterval(counter);
 			}
 		$('#timeBox').html(timeConverter(startTime));
