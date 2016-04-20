@@ -1,12 +1,12 @@
 // v1 - timer that rings after 5 minutes
 
-// local storage 
 var winningAudio = [];
 var winAudio = '';
 var startTime = 300; //start time in seconds 
 var startTime = 3;
 var query = 'https://funbreak.firebaseio.com/preview_url.json';
 var song = '';
+
 	function callToFireBase() {
 		$.ajax({url: query, method: 'GET'}).done(function(response){
 			// console.log('here is the preview_url json');
@@ -15,6 +15,15 @@ var song = '';
 				// console.log(urlResponse);
 				winningAudio.push(urlResponse);
 			} 
+			for(var i = 0; i < winningAudio.length; i++){
+				var lotteryNumber = (Math.floor(Math.random() * (winningAudio.length) + 1));
+				if (lotteryNumber == i) {
+					winAudio = winningAudio[i]
+				} 
+			}
+			winAudio;
+			song = new Audio(winAudio);
+			audio(song);
 			});
 	}	
 	function start(){
@@ -32,14 +41,14 @@ var song = '';
 		$('#timeBox').html(timeConverter(startTime));
 		stopAudio(song);
 	}
-	function audio(){
+	function audio(song){
 	    song.play();
 	}
 	function stopAudio(){
 		song.pause();
 	}
 	function randomAudioWin(){
-		for(var i = 0; i < winningAudio.length;i++){
+		for(var i = 0; i < winningAudio.length; i++){
 			var lotteryNumber = (Math.floor(Math.random() * (winningAudio.length) + 1));
 			if (lotteryNumber == i) {
 				winAudio = winningAudio[i]
@@ -52,7 +61,8 @@ var song = '';
 		startTime = startTime - 1;
 			if (startTime == 0) {
 			callToFireBase();
-			randomAudioWin();
+			// randomAudioWin();
+			// audio();
 			clearInterval(counter);
 			}
 		$('#timeBox').html(timeConverter(startTime));
@@ -79,11 +89,7 @@ window.onload = function(){
 	$('#reset').on('click', reset);
 }
 
-// Use this to set new Audio constructor
-// mySound = new Audio(['https://p.scdn.co/mp3-preview/f59a6b5f638815d9116c84d21d8bbf01ffda0892']);
-// function playAudio(){
-// 	mySound.play();
-// }
+
 
 
 
