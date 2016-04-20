@@ -2,11 +2,11 @@
 
 // local storage 
 var winningAudio = [];
-var winAudio;
+var winAudio = '';
 var startTime = 300; //start time in seconds 
 var startTime = 3;
 var query = 'https://funbreak.firebaseio.com/preview_url.json';
-var song;
+var song = '';
 	function callToFireBase() {
 		$.ajax({url: query, method: 'GET'}).done(function(response){
 			// console.log('here is the preview_url json');
@@ -42,17 +42,17 @@ var song;
 		for(var i = 0; i < winningAudio.length;i++){
 			var lotteryNumber = (Math.floor(Math.random() * (winningAudio.length) + 1));
 			if (lotteryNumber == i) {
-				var winAudio = winningAudio[i]
-				song = new Audio(winAudio);
+				winAudio = winningAudio[i]
 			} 
 		}
+		winAudio;
+		song = new Audio(winAudio);
 	}
 	function countDown(){
 		startTime = startTime - 1;
 			if (startTime == 0) {
 			callToFireBase();
 			randomAudioWin();
-			// audio();
 			clearInterval(counter);
 			}
 		$('#timeBox').html(timeConverter(startTime));
@@ -70,6 +70,8 @@ var song;
 	    }
 	    return minutes + ":" + seconds;
 	}
+
+	
 	
 window.onload = function(){
 	$('#start').on('click', start);
